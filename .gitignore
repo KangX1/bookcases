@@ -1,5 +1,2 @@
-boundary  
-faces  
-neighbour  
-owner  
-points
+PyFoam*
+*log*
