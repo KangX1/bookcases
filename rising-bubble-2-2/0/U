@@ -1,7 +1,7 @@
 /*--------------------------------*- C++ -*----------------------------------*\
 | =========                 |                                                 |
 | \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
-|  \\    /   O peration     | Version:  2.2.0                                 |
+|  \\    /   O peration     | Version:  2.2.x                                 |
 |   \\  /    A nd           | Web:      www.OpenFOAM.org                      |
 |    \\/     M anipulation  |                                                 |
 \*---------------------------------------------------------------------------*/
@@ -25,28 +25,23 @@ boundaryField
     {
         type            zeroGradient;
     }
-
     right
     {
         type            zeroGradient;
     }
-
-    front  
+    front
     {
         type            zeroGradient;
     }
-
-    back 
+    back
     {
         type            zeroGradient;
     }
-
-    bottom 
+    bottom
     {
         type            zeroGradient;
     }
-
-    top 
+    top
     {
         type            zeroGradient;
     }
