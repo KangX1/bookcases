@@ -1,2 +1,9 @@
 PyFoam*
 *log*
+0.*
+points
+boundary
+owner
+neighbour
+faces
+*Zones*
