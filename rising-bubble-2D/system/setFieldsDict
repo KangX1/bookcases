@@ -27,8 +27,8 @@ regions
 
     sphereToCell
     {
-        centre (0 0 0);
-        radius 0.02;
+        centre (1 1 0);
+        radius 0.2;
         fieldValues
         (
             volScalarFieldValue alpha1 1
