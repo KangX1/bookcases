@@ -30,9 +30,9 @@ gradSchemes
 divSchemes
 {
     default         none;
-    div(phi,U)      Gauss linearUpwind Gauss linear;
-    div(phi,nuTilda) Gauss linearUpwind Gauss linear;
-    div((nuEff*dev(grad(U).T()))) Gauss linear;
+    div(phi,U)      Gauss upwind;
+    div(phi,nuTilda) Gauss upwind;
+    div((nuEff*dev(T(grad(U))))) Gauss linear;
 	div(phi,k)      Gauss upwind;
 	div(phi,omega)  Gauss upwind;
 }
