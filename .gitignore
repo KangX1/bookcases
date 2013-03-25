@@ -1,9 +1,26 @@
+# PyFoam and python stuff
 PyFoam*
+PlyParser_FoamFileParser_parsetab.py*
+*.py
+
 *log*
+
+# Ignore timestep directories
+[1-9]*
 0.*
+
+# contents of polyMesh
 points
 boundary
 owner
 neighbour
 faces
 *Zones*
+*Level
+
+# Paraview
+*.foam
+*.pvsm
+
+# Vim crap
+*.swo
