@@ -29,6 +29,7 @@ divSchemes
 {
     default         Gauss linear;
     div(rho*phi,U)  Gauss limitedLinearV 1;
+    div(rho*phi,T)  Gauss upwind;
     div(phi,alpha)  Gauss vanLeer;
     div(phirb,alpha) Gauss interfaceCompression;
 }
