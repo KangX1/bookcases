@@ -23,4 +23,5 @@ faces
 *.pvsm
 
 # Vim crap
-*.swo
+*.sw*
+
