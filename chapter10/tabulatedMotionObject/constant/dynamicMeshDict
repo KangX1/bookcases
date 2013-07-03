@@ -22,7 +22,7 @@ solver            displacementLaplacian;
 
 displacementLaplacianCoeffs
 {
-    diffusivity       inverseDistance (floatingObject);
+    diffusivity       inverseDistance (movingObject);
 }
 
 tabulated6DoFMotionCoeffs
