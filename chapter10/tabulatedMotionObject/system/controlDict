@@ -53,7 +53,7 @@ maxDeltaT       0.01;
 
 libs
 (
-    "libtabulatedRigidBodyDisplacement.so"
+    "libofBookBoundaryConditions.so"
 );
 
 // ************************************************************************* //
