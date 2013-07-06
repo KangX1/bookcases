@@ -9,47 +9,49 @@ FoamFile
 {
     version     2.0;
     format      ascii;
-    class       volVectorField;
-    object      U;
+    class       dictionary;
+    location    "system";
+    object      controlDict;
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-dimensions      [0 1 -1 0 0 0 0];
+application     icoFoam;
 
-internalField   uniform (0 0 0);
+startFrom       latestTime;
 
-boundaryField
-{
-    inlet
-    {
-        type            fixedValue;
-        value           uniform (1 0 0);
-    }
+startTime       0;
 
-    outlet
-    {
-        type            recirculationControlInletOutlet;
-        inletValue      uniform (-1 0 0);
-        value           uniform (1 0 0); 
-        controlled      inlet;
-    }
+stopAt          endTime;
 
-    upperWall
-    {
-        type            fixedValue;
-        value           uniform (0 0 0);
-    }
+endTime         1.5;
 
-    lowerWall
-    {
-        type            fixedValue;
-        value           uniform (0 0 0);
-    }
+deltaT          0.005;
 
-    frontAndBack
-    {
-        type            empty;
-    }
-}
+writeControl    adjustableRunTime;
+
+writeInterval   0.01;
+
+purgeWrite      0;
+
+writeFormat     ascii;
+
+writePrecision  6;
+
+writeCompression off;
+
+timeFormat      general;
+
+timePrecision   6;
+
+runTimeModifiable true;
+
+adjustTimeStep yes; 
+
+maxCo          0.5; 
+
+libs
+(
+    "libofBookBoundaryConditions.so"
+);
 
 // ************************************************************************* //

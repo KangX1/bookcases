@@ -28,7 +28,9 @@ boundaryField
 
     outlet
     {
-        type            zeroGradient;
+        type                 recirculationControl;
+        applyControl         no;
+        baseTypeName         zeroGradient;
     }
 
     upperWall
