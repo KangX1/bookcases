@@ -1,0 +1,93 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM Extend Project: Open Source CFD        |
+|  \\    /   O peration     | Version:  1.6-ext                               |
+|   \\  /    A nd           | Web:      www.extend-project.de                 |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    location    "system";
+    object      controlDict;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+application     interFoam;
+
+startFrom       latestTime;
+
+startTime       0;
+
+stopAt          endTime;
+
+endTime         2;
+
+deltaT          0.001;
+
+writeControl    adjustableRunTime;
+
+writeInterval   0.1;
+
+purgeWrite      0;
+
+writeFormat     ascii;
+
+writePrecision  6;
+
+writeCompression uncompressed;
+
+timeFormat      general;
+
+timePrecision   6;
+
+runTimeModifiable yes;
+
+adjustTimeStep  yes;
+
+maxCo           0.5;
+maxAlphaCo      0.5;
+
+maxDeltaT       0.003;
+
+libs (
+    "libsimpleSwakFunctionObjects.so" 
+    "libutilityFunctionObjects.so"
+);
+
+functions
+{
+    courantNo
+    {
+        type CourantNo; 
+        phiName phi; 
+        rhoName rho; 
+    }
+
+    dropletKineticEnergy 
+    {
+        type swakExpression; 
+        expression "alpha1*rho*vol()*(U & U)*0.5";
+        accumulations (sum); 
+        valueType internalField; 
+        outputControlMode timestep; 
+        outputInterval 1;
+    }
+
+    dropletPotentialEnergy 
+    {
+        type swakExpression; 
+        expression "alpha1*rho*vol()*9.81*pos().y";
+        accumulations (sum); 
+        valueType internalField; 
+        outputControlNode timestep; 
+        outputInterval 1; 
+        outputControlMode timestep;
+        outputInterval 1; 
+    }
+}
+
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
