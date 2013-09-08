@@ -55,6 +55,7 @@ maxDeltaT       0.003;
 libs (
     "libsimpleSwakFunctionObjects.so" 
     "libutilityFunctionObjects.so"
+    "libofBookFunctionObjects.so"
 );
 
 functions
@@ -88,6 +89,14 @@ functions
         outputControlMode timestep;
         outputInterval 1; 
     }
+
+    wettedCellsTest 
+    {
+        type wettedCells;
+        volFractionField alpha1; 
+        wettedTolerance 0.01; 
+    }  
+
 }
 
 
