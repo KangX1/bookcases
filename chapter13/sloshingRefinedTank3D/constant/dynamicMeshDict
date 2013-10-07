@@ -15,7 +15,8 @@ FoamFile
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-dynamicFvMesh   solidBodyMotionFvMesh;
+dynamicFvMesh   dynamicSolidBodyMotionRefinedFvMesh;
+/*dynamicFvMesh   solidBodyMotionFvMesh;*/
 
 solidBodyMotionFvMeshCoeffs
 {
@@ -34,6 +35,40 @@ solidBodyMotionFvMeshCoeffs
         dTi             0.059;
         dTp             -0.001;
     }
+}
+
+dynamicRefineFvMeshCoeffs
+{
+    // How often to refine
+    refineInterval  1;
+    // Field to be refinement on
+    field           alpha1;
+    // Refine field inbetween lower..upper
+    lowerRefineLevel 0.0001;
+    upperRefineLevel 0.999;
+    // If value < unrefineLevel unrefine
+    unrefineLevel   10;
+    // Have slower than 2:1 refinement
+    nBufferLayers   4;
+    // Refine cells only up to maxRefinement levels
+    maxRefinement   1;
+    // Stop refinement if maxCells reached
+    maxCells        100000;
+    // Flux field and corresponding velocity field. Fluxes on changed
+    // faces get recalculated by interpolating the velocity. Use 'none'
+    // on surfaceScalarFields that do not need to be reinterpolated.
+    correctFluxes
+    (
+        (phi Urel)
+        (phiAbs U)
+        (phiAbs_0 U_0)
+        (nHatf none)
+        (rho*phi none)
+        (ghf none)
+        (phi_0 none)
+    );
+    // Write the refinement level as a volScalarField
+    dumpLevel       true;
 }
 
 
