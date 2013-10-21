@@ -26,7 +26,7 @@ stopAt          endTime;
 
 endTime         0.5;
 
-deltaT          0.001;
+deltaT          0.005;
 
 /*writeControl    adjustableRunTime;*/
 
@@ -34,7 +34,7 @@ deltaT          0.001;
 
 writeControl    timeStep;
 
-writeInterval   10;
+writeInterval   2;
 
 purgeWrite      0;
 
@@ -42,7 +42,7 @@ writeFormat     ascii;
 
 writePrecision  6;
 
-writeCompression ascii;
+writeCompression uncompressed;
 
 timeFormat      general;
 
@@ -50,28 +50,28 @@ timePrecision   6;
 
 runTimeModifiable yes;
 
-adjustTimeStep  no;
+adjustTimeStep  yes;
 
-maxCo           0.5;
-maxAlphaCo      0.5;
+maxCo           0.25;
+maxAlphaCo      0.25;
 
-maxDeltaT       0.01;
+maxDeltaT       1;
 
-libs (
-    "libofBookDynamicFvMesh.so"
-    "libutilityFunctionObjects.so"
-);
+/*libs (*/
+    /*"libofBookDynamicFvMesh.so"*/
+    /*"libutilityFunctionObjects.so"*/
+/*);*/
 
-functions
-{
-    courantNo
-    {
-        type CourantNo; 
-        phiName phi; 
-        rhoName rho; 
-        outputControl outputTime; 
-    }
-}
+/*functions*/
+/*{*/
+    /*courantNo*/
+    /*{*/
+        /*type CourantNo; */
+        /*phiName phi; */
+        /*rhoName rho; */
+        /*outputControl outputTime; */
+    /*}*/
+/*}*/
 
 
 // ************************************************************************* //
