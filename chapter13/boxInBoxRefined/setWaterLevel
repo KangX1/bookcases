@@ -1,0 +1,3 @@
+funkySetFields -field alpha1 -time 0 -condition "pos().z >= 0.4 && pos().z <= 0.46" -expression "0.5" 2>&1 > /dev/null
+funkySetFields -field alpha1 -time 0 -condition "pos().z >= 0.4 && pos().z > 0.46" -expression "0" 2>&1 > /dev/null
+funkySetFields -field alpha1 -time 0 -condition "pos().z < 0.4" -expression "1" 2>&1 > /dev/null

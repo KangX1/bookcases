@@ -1,0 +1,21 @@
+#!/bin/sh
+
+echo running Allclean
+
+rm -rf 0
+rm -rf 0.[0-9]*
+rm -rf [1-9]*
+rm -rf processor*
+rm -rf constant/blend*
+rm -rf sixDoF
+rm -rf forces
+rm -rf *.log
+rm -rf postProcessing
+rm -f constant/polyMesh/face*
+rm -f constant/polyMesh/cell*
+rm -f constant/polyMesh/point*
+rm -f constant/polyMesh/owner
+rm -f constant/polyMesh/neighbour
+rm -f constant/polyMesh/boundary
+rm -rf constant/polyMesh/sets
+# ----------------------------------------------------------------- end-of-file
