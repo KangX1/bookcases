@@ -59,7 +59,7 @@ dynamicRefineFvMeshCoeffs
     // If value < unrefineLevel unrefine
     unrefineLevel   10;
     // Have slower than 2:1 refinement
-    nBufferLayers   4;
+    nBufferLayers   2;
     // Refine cells only up to maxRefinement levels
     maxRefinement   1;
     // Stop refinement if maxCells reached
@@ -69,7 +69,8 @@ dynamicRefineFvMeshCoeffs
     // on surfaceScalarFields that do not need to be reinterpolated.
     correctFluxes
     (
-        (phi Urel)
+        /*(phi Urel)*/
+        (phi U)
         (phiAbs U)
         (phiAbs_0 U_0)
         (nHatf none)
