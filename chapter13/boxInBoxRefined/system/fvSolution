@@ -137,17 +137,17 @@ solvers
 
 PIMPLE
 {
-    nOuterCorrectors 2;
-    momentumPredictor yes;
-    nCorrectors     1;
+    momentumPredictor no;
+    nCorrectors     2;
     nNonOrthogonalCorrectors 4;
     nAlphaCorr      1;
+    /*nAlphaSubCycles 3;*/
     nAlphaSubCycles 1;
-    cAlpha          1;
+    cAlpha          1.5;
     correctPhi      no;
-    checkMeshCourantNo no; 
-    pRefCell 0; 
-    pRefValue 0;
+
+    pRefPoint       (0.5 0.5 1.95);
+    pRefValue       0;
 }
 
 

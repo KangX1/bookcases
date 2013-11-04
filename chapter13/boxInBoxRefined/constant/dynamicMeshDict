@@ -16,12 +16,11 @@ FoamFile
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
 /*dynamicFvMesh staticFvMesh;*/
-/*dynamicFvMesh   dynamicSolidBodyMotionRefinedFvMesh;*/
-dynamicFvMesh   dynamicRefineFvMesh;
+dynamicFvMesh   dynamicSolidBodyMotionRefinedFvMesh;
+/*dynamicFvMesh   dynamicRefineFvMesh;*/
 /*dynamicFvMesh   solidBodyMotionFvMesh;*/
 
-
-solidBodyMotionFvMeshCoeffs
+dynamicSolidBodyMotionRefinedFvMeshCoeffs
 {
     /*solidBodyMotionFunction SDA;*/
     /*SDACoeffs*/
@@ -43,8 +42,37 @@ solidBodyMotionFvMeshCoeffs
 
     linearMotionCoeffs
     {
-        velocity (0 0 -1);
+        velocity (0 0 -0.1);
+        /*velocity (1 0 0);*/
+        /*velocity (0 0 0);*/
     }
+}
+
+
+solidBodyMotionFvMeshCoeffs
+{
+    /*solidBodyMotionFunction SDA;*/
+    /*SDACoeffs*/
+    /*{*/
+        /*CofG            ( 0 0 0 );*/
+        /*lamda           50;*/
+        /*rollAmax        0.22654;*/
+        /*rollAmin        0.10472;*/
+        /*heaveA          3.79;*/
+        /*swayA           2.34;*/
+        /*Q               2;*/
+        /*Tp              13.93;*/
+        /*Tpn             11.93;*/
+        /*dTi             0.059;*/
+        /*dTp             -0.001;*/
+    /*}*/
+
+    /*solidBodyMotionFunction linearMotion;*/
+
+    /*linearMotionCoeffs*/
+    /*{*/
+        /*velocity (0 0 -1);*/
+    /*}*/
 }
 
 dynamicRefineFvMeshCoeffs
@@ -70,9 +98,15 @@ dynamicRefineFvMeshCoeffs
     correctFluxes
     (
         /*(phi Urel)*/
-        (phi U)
+        /*(phi U)*/
+        (phi none)
+
         (phiAbs U)
+        /*(phiAbs none)*/
+
         (phiAbs_0 U_0)
+        /*(phiAbs_0 none)*/
+
         (nHatf none)
         (rho*phi none)
         (ghf none)

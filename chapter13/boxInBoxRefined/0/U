@@ -17,27 +17,52 @@ FoamFile
 
 dimensions      [0 1 -1 0 0 0 0];
 
-internalField   uniform (0 0 1);
+internalField   uniform (0 0 0);
 
 boundaryField
 {
     REST
     {
         /*type            zeroGradient;*/
-        type            fixedValue; 
-        value           uniform (0 0 1);
+
+        /*type            fixedValue; */
+        /*value           uniform (0 0 1);*/
+
+        /*type            movingWallVelocity;*/
+        /*type            fixedValue; */
+        /*value           uniform (0 0 -0.5);*/
+
+        type            movingWallVelocity;
+        value uniform (0 0 0); 
     }
     ZMAX
     {
         /*type            zeroGradient;*/
-        type            fixedValue; 
-        value           uniform (0 0 1);
+
+        /*type            fixedValue; */
+        /*value           uniform (0 0 1);*/
+
+        /*type            movingWallVelocity;*/
+        /*type            fixedValue; */
+        /*value           uniform (0 0 -0.5);*/
+
+        type            movingWallVelocity;
+        value uniform (0 0 0); 
+
     }
     ZMIN 
     {
         /*type            zeroGradient;*/
-        type            fixedValue; 
-        value           uniform (0 0 1);
+
+        /*type            fixedValue; */
+        /*value           uniform (0 0 1);*/
+
+        /*type            movingWallVelocity;*/
+        /*type            fixedValue; */
+        /*value           uniform (0 0 -0.5);*/
+
+        type            movingWallVelocity;
+        value uniform (0 0 0);
     }
     HULL
     {
