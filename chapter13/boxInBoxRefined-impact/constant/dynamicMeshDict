@@ -23,11 +23,9 @@ dynamicSolidBodyMotionRefinedFvMeshCoeffs
 
     linearMotionCoeffs
     {
-        velocity (0 0 -0.5);
+        velocity (0 0 -0.1);
     }
-
 }
-
 
 dynamicRefineFvMeshCoeffs
 {
@@ -36,7 +34,7 @@ dynamicRefineFvMeshCoeffs
     // Field to be refinement on
     field           alpha1;
     // Refine field inbetween lower..upper
-    lowerRefineLevel 0.00001;
+    lowerRefineLevel 0.0001;
     upperRefineLevel 0.999;
     // If value < unrefineLevel unrefine
     unrefineLevel   10;
@@ -66,6 +64,7 @@ dynamicRefineFvMeshCoeffs
         (ghf none)
         (phi_0 none)
     );
+
     // Write the refinement level as a volScalarField
     dumpLevel       false;
 }

@@ -62,16 +62,16 @@ libs (
     "libutilityFunctionObjects.so"
 );
 
-functions
-{
-    courantNo
-    {
-        type CourantNo; 
-        phiName phi; 
-        rhoName rho; 
-        outputControl outputTime; 
-    }
-}
+/*functions*/
+/*{*/
+    /*courantNo*/
+    /*{*/
+        /*type CourantNo; */
+        /*phiName phi; */
+        /*rhoName rho; */
+        /*outputControl outputTime; */
+    /*}*/
+/*}*/
 
 
 // ************************************************************************* //

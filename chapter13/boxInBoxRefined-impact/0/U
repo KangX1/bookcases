@@ -23,58 +23,23 @@ boundaryField
 {
     REST
     {
-        /*type slip; */
-
         type            zeroGradient;
-
-        /*type            fixedValue; */
-        /*value           uniform (0 0 1);*/
-
-        /*type            movingWallVelocity;*/
-        /*type            fixedValue; */
-        /*value           uniform (0 0 -0.5);*/
-
-        /*type            movingWallVelocity;*/
-        /*value uniform (0 0 0); */
     }
     ZMAX
     {
         type            zeroGradient;
 
-        /*type            fixedValue; */
-        /*value           uniform (0 0 1);*/
-
-        /*type            movingWallVelocity;*/
-        /*type            fixedValue; */
-        /*value           uniform (0 0 -0.5);*/
-
-        /*type            movingWallVelocity;*/
-        /*value uniform (0 0 0); */
-
     }
     ZMIN 
     {
-        /*type            zeroGradient;*/
-
-        /*type            fixedValue; */
-        /*value           uniform (0 0 1);*/
-
         type            fixedValue; 
         value           uniform (0 0 0);
-
-        /*type            movingWallVelocity;*/
-        /*type            fixedValue; */
-        /*value           uniform (0 0 -0.5);*/
-
-        /*type            movingWallVelocity;*/
-        /*value uniform (0 0 0);*/
     }
     HULL
     {
-        type            zeroGradient;
         /*type            movingWallVelocity;*/
-        /*type            fixedValue; */
         /*value           uniform (0 0 0);*/
+        type slip;
     }
 }
 

@@ -116,7 +116,7 @@ solvers
         maxIter         20;
     }
 
-    "(U|k|epsilon|alpha1)"
+    "(U|k|epsilon)"
     {
         solver          smoothSolver;
         smoother        GaussSeidel;
@@ -137,17 +137,14 @@ solvers
 
 PIMPLE
 {
-    momentumPredictor yes;
-    nCorrectors     4;
-    nNonOrthogonalCorrectors 0;
+    nOuterCorrectors 2;
+    momentumPredictor no;
+    nCorrectors     1;
+    nNonOrthogonalCorrectors 4;
     nAlphaCorr      1;
     nAlphaSubCycles 3;
-    nAlphaSubCycles 1;
-    cAlpha          1.5;
+    cAlpha          1;
     correctPhi      yes;
-
-    pRefPoint       (0.5 0.5 1.95);
-    pRefValue       0;
 }
 
 
