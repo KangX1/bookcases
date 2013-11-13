@@ -1,0 +1,63 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  2.1.x                                 |
+|   \\  /    A nd           | Web:      www.OpenFOAM.org                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      externalForceDict;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+Obelix
+{
+    type    constantForce;
+    active  true;
+    timeStart   0.0;
+    duration    1e10;
+    constantForceCoeffs
+    {
+        value       (1e1 0 0);
+        position    (0.35 0.35 0);
+
+        rampCoeffs
+        {
+            type    stepFunction;
+            name    sdaf;
+            startTime   0.0;
+            blendingTime    3;
+            active  no;
+        }
+    }
+}
+
+
+/*drunkenSailor*/
+/*{*/
+    /*type        brixRudderModelWiggly;*/
+    /*active      true;*/
+    /*timeStart   0.0;*/
+    /*duration    1e10;*/
+
+    /*brixRudderModelWigglyCoeffs*/
+    /*{*/
+        /*b           1;*/
+        /*AR          3.54;*/
+        /*Cq          0.99;*/
+        /*alphaMax    10;*/
+        /*T           1;*/
+        /*w           0.2;*/
+        /*vS          5.92;*/
+        /*Cth         1.0;*/
+        /*rhoInf      1000;*/
+
+        /*position    (1 2 3);*/
+    /*}*/
+/*}*/
+
+// ************************************************************************* //
