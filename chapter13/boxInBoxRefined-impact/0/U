@@ -37,9 +37,10 @@ boundaryField
     }
     HULL
     {
-        /*type            movingWallVelocity;*/
+        type            movingWallVelocity;
+        value           uniform (0 0 0);
+        /*type            fixedValue; */
         /*value           uniform (0 0 0);*/
-        type slip;
     }
 }
 

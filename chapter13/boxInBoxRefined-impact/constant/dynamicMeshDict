@@ -19,11 +19,19 @@ dynamicFvMesh   dynamicSolidBodyMotionRefinedFvMesh;
 
 dynamicSolidBodyMotionRefinedFvMeshCoeffs
 {
-    solidBodyMotionFunction linearMotion;
+    /*solidBodyMotionFunction linearMotion;*/
 
-    linearMotionCoeffs
+    /*linearMotionCoeffs*/
+    /*{*/
+        /*velocity (0 0 -0.1);*/
+    /*}*/
+
+    solidBodyMotionFunction oscillatingLinearMotion;
+
+    oscillatingLinearMotionCoeffs
     {
-        velocity (0 0 -0.1);
+        amplitude (0 0 -0.1);
+        omega 12; 
     }
 }
 

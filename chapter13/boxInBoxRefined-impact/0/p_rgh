@@ -27,7 +27,14 @@ boundaryField
     }
     ZMAX
     {
-        type            zeroGradient;
+        type            totalPressure;
+        p0              uniform 0;
+        U               U;
+        phi             phi;
+        rho             rho;
+        psi             none;
+        gamma           1;
+        value           uniform 0;
     }
     ZMIN 
     {
@@ -35,7 +42,7 @@ boundaryField
     }
     HULL
     {
-        type            zeroGradient; 
+        type            zeroGradient;
     }
 }
 
