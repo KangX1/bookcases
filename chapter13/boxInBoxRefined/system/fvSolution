@@ -1,0 +1,171 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  2.1.1                                 |
+|   \\  /    A nd           | Web:      www.OpenFOAM.org                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    location    "system";
+    object      fvSolution;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+solvers
+{
+    cellDisplacement
+    {
+        solver          GAMG;
+        tolerance       1e-5;
+        relTol          0;
+        smoother        GaussSeidel;
+        cacheAgglomeration true;
+        nCellsInCoarsestLevel 10;
+        agglomerator    faceAreaPair;
+        mergeLevels     1;
+    }
+
+    pcorr
+    {
+        solver          PCG;
+        preconditioner
+        {
+            preconditioner  GAMG;
+            tolerance       1e-6;
+            relTol          0.1;
+            smoother        DICGaussSeidel;
+            nPreSweeps      0;
+            nPostSweeps     2;
+            nFinestSweeps   2;
+            cacheAgglomeration false;
+            nCellsInCoarsestLevel 10;
+            agglomerator    faceAreaPair;
+            mergeLevels     1;
+        }
+
+        tolerance       1e-06;
+        relTol          0.1;
+        maxIter         100;
+    }
+
+    pcorrFinal
+    {
+        solver          PCG;
+        preconditioner
+        {
+            preconditioner  GAMG;
+            tolerance       1e-7;
+            relTol          0.1;
+            smoother        DICGaussSeidel;
+            nPreSweeps      0;
+            nPostSweeps     2;
+            nFinestSweeps   2;
+            cacheAgglomeration false;
+            nCellsInCoarsestLevel 10;
+            agglomerator    faceAreaPair;
+            mergeLevels     1;
+        }
+
+        tolerance       1e-07;
+        relTol          0.1;
+        maxIter         100;
+    }
+
+
+
+    p_rgh
+    {
+        solver          GAMG;
+        tolerance       1e-8;
+        relTol          0;
+        smoother        DIC;
+        nPreSweeps      0;
+        nPostSweeps     2;
+        nFinestSweeps   2;
+        cacheAgglomeration true;
+        nCellsInCoarsestLevel 10;
+        agglomerator    faceAreaPair;
+        mergeLevels     1;
+    }
+
+    p_rghFinal
+    {
+        solver          PCG;
+        preconditioner
+        {
+            preconditioner  GAMG;
+            tolerance       1e-8;
+            relTol          0;
+            nVcycles        2;
+            smoother        DICGaussSeidel;
+            nPreSweeps      2;
+            nPostSweeps     2;
+            nFinestSweeps   2;
+            cacheAgglomeration true;
+            nCellsInCoarsestLevel 10;
+            agglomerator    faceAreaPair;
+            mergeLevels     1;
+        }
+
+        tolerance       1e-8;
+        relTol          0;
+        maxIter         20;
+    }
+
+    "(U|k|epsilon|alpha1)"
+    {
+        solver          smoothSolver;
+        smoother        GaussSeidel;
+        tolerance       1e-6;
+        relTol          0.1;
+        nSweeps         1;
+    }
+
+    "(U|k|epsilon)Final"
+    {
+        solver          smoothSolver;
+        smoother        GaussSeidel;
+        tolerance       1e-6;
+        relTol          0;
+        nSweeps         1;
+    }
+}
+
+PIMPLE
+{
+    momentumPredictor yes;
+    nCorrectors     4;
+    nNonOrthogonalCorrectors 0;
+    nAlphaCorr      1;
+    nAlphaSubCycles 3;
+    nAlphaSubCycles 1;
+    cAlpha          1.5;
+    correctPhi      yes;
+
+    pRefPoint       (0.5 0.5 1.95);
+    pRefValue       0;
+}
+
+
+relaxationFactors
+{
+    fields
+    {
+
+    }
+    equations
+    {
+        "(U|k|epsilon|omega|R|nuTilda).*" 1.0;
+    }
+}
+
+cache
+{
+    grad(U);
+}
+
+// ************************************************************************* //

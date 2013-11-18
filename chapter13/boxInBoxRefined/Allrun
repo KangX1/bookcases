@@ -1,0 +1,42 @@
+#!/bin/bash
+cd ${0%/*} || exit 1    # run from this directory
+
+if [[ "$1" == --parallel ]]
+then
+  parallel_run=true
+  shift # remove the option from $@
+  echo 'is a parallel run'
+else
+  parallel_run=false
+  echo 'is a seriell run'
+fi
+
+./Allclean
+
+echo running blockMesh
+blockMesh > blockMesh.log 2>&1
+echo running topoSet
+topoSet > topoSet.log 2>&1
+echo running subsetMesh
+subsetMesh -overwrite c0 -patch HULL > subsetMesh.log 2>&1
+transformPoints -translate "(0 0 -0.5)"
+cp -r zero 0 > /dev/null 2>&1
+echo running setFields
+setFields > setFields.log 2>&1
+setBlendField 	-noFunctionObjects blend \
+		-zeroPatches '(HULL)' \
+		-minDistMaxDist '( 0.01 0.3 )' \
+		-scale '(1 1 1.5)' \
+		-exponent 0.8 \
+		-BlendingType polynomial \
+		-onePatches '(ZMAX REST)' \
+		> setBlendField.log 2>&1
+
+#if $parallel_run
+#then
+	#echo running decomposePar
+    #decomposePar -noFunctionObjects -constant > decomposePar.log 2>&1
+#fi
+
+
+# ----------------------------------------------------------------- end-of-file

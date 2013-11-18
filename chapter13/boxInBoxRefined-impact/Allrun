@@ -1,0 +1,26 @@
+#!/bin/bash
+cd ${0%/*} || exit 1    # run from this directory
+
+if [[ "$1" == --parallel ]]
+then
+  parallel_run=true
+  shift # remove the option from $@
+  echo 'is a parallel run'
+else
+  parallel_run=false
+  echo 'is a seriell run'
+fi
+
+./Allclean
+
+cp -r 0.org 0 
+echo running blockMesh
+blockMesh > blockMesh.log 2>&1
+echo running topoSet
+topoSet > topoSet.log 2>&1
+echo running subsetMesh
+subsetMesh -overwrite c0 -patch HULL > subsetMesh.log 2>&1
+./setWaterLevel
+#interDyMFoam
+
+# ----------------------------------------------------------------- end-of-file
