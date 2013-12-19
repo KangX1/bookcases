@@ -111,7 +111,7 @@ blocks
 
 boundary
   (
-    HULL
+    BOX
 
     {
       faces

@@ -15,7 +15,7 @@ FoamFile
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-application     interImplicitDyMFoam;
+application     moveDynamicMesh;
 
 startFrom       startTime;
 
