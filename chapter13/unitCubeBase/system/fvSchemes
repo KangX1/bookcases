@@ -1,0 +1,66 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  2.2.0                                 |
+|   \\  /    A nd           | Web:      www.OpenFOAM.org                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    location    "system";
+    object      fvSchemes;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+ddtSchemes
+{
+    default         CrankNicolson 0.15;
+}
+
+gradSchemes
+{
+    default         Gauss linear;
+    grad(p)         Gauss linear;
+    grad(U)         cellLimited Gauss linear 1;
+}
+
+divSchemes
+{
+    default         none;
+    div(rho*phi,U)  Gauss linearUpwindV grad(U);
+    div(phi,alpha)  Gauss SFCD;
+    div(phirb,alpha) Gauss interfaceCompression;
+    div((muEff*dev(T(grad(U)))))    Gauss linear;
+    div(phi,k)      Gauss upwind;
+    div(phi,omega)  Gauss upwind;
+}
+
+laplacianSchemes
+{
+    default         Gauss linear limited corrected 0.33;
+}
+
+interpolationSchemes
+{
+    default         linear;
+}
+
+snGradSchemes
+{
+    default         limited corrected 0.33;
+}
+
+fluxRequired
+{
+    default         no;
+    pcorr           ;
+    p_rgh           ;
+    p               ;
+    alpha1          ;
+}
+
+
+// ************************************************************************* //

@@ -1,0 +1,81 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  2.2.1                                 |
+|   \\  /    A nd           | Web:      www.OpenFOAM.org                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    location    "system";
+    object      controlDict;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+
+application     interDyMFoam;
+
+startFrom       startTime;
+
+startTime       0;
+
+stopAt          endTime;
+
+endTime         0.25;
+
+deltaT          0.005;
+
+writeControl    timeStep;
+
+writeInterval   1;
+
+purgeWrite      0;
+
+writeFormat     ascii;
+
+writePrecision  6;
+
+writeCompression uncompressed;
+
+timeFormat      general;
+
+timePrecision   6;
+
+runTimeModifiable yes;
+
+adjustTimeStep  no;
+
+maxCo           0.25;
+maxAlphaCo      0.25;
+
+maxDeltaT       0.005;
+
+// Uncomment to enable the library provided together with the book.
+/*libs (*/
+    /*"libofBookDynamicFvMesh.so"*/
+    /*"libutilityFunctionObjects.so"*/
+/*);*/
+
+
+// Uncomment to enable the library described in the tutorial.
+libs (
+    "libsolidBodyMotionRefined.so"
+    "libutilityFunctionObjects.so"
+);
+
+functions
+{
+    courantNo
+    {
+        type CourantNo; 
+        phiName phi; 
+        rhoName rho; 
+        outputControl outputTime; 
+    }
+}
+
+
+// ************************************************************************* //

@@ -25,3 +25,9 @@ faces
 # Vim crap
 *.sw*
 
+# Archives
+*.tgz
+*.zip
+*.gz
+*.7z
+*.bz2

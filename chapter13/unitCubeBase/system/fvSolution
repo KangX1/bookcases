@@ -1,0 +1,111 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  2.2.0                                 |
+|   \\  /    A nd           | Web:      www.OpenFOAM.org                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      fvSolution;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+solvers
+{
+    "(pcorr|p_rgh)"
+    {
+        solver          GAMG;
+        tolerance       1e-6;
+        relTol          0;
+        smoother        DICGaussSeidel;
+        cacheAgglomeration no;
+        nCellsInCoarsestLevel 10;
+        agglomerator    faceAreaPair;
+        mergeLevels     1;
+        maxIter         1000;
+    }
+
+    p
+    {
+        $pcorr;
+        tolerance       1e-6;
+        relTol          0.0;
+    }
+
+    "(pFinal|p_rghFinal)"
+    {
+        $p;
+        tolerance       1e-6;
+        relTol          0;
+    }
+
+    "(U|k|epsilon)"
+    {
+        solver          smoothSolver;
+        smoother        GaussSeidel;
+        tolerance       1e-6;
+        relTol          0.0;
+    }
+
+    "(U|k|epsilon)Final"
+    {
+        solver          PBiCG;
+        preconditioner  DILU;
+        tolerance       1e-5;
+        relTol          0;
+    }
+    cellDisplacement
+    {
+        solver          GAMG;
+        tolerance       1e-5;
+        relTol          0;
+        smoother        GaussSeidel;
+        cacheAgglomeration true;
+        nCellsInCoarsestLevel 10;
+        agglomerator faceAreaPair;
+        mergeLevels 1;
+    }
+    alpha1
+    {
+        maxUnboundedness 1e-8;
+        CoCoeff 10;
+        maxIter 7;
+        nLimiterIter 10;
+
+        solver PBiCG;
+        preconditioner DILU;
+        tolerance 1e-16;
+        relTol 0.0;
+    }
+}
+
+PIMPLE
+{
+    nAlphaCorr      1;
+    nAlphaSubCycles 13;
+    cAlpha          0.5;
+
+    correctPhi          yes;
+    nOuterCorrectors    2;
+    nCorrectors         1;
+    nNonOrthogonalCorrectors 1;
+    pRefCell    0;
+    pRefValue   0;
+}
+
+relaxationFactors
+{
+    /*"(U|k|epsilon).*"   0.7;*/
+    /*"p*"    0.3;*/
+}
+
+cache
+{
+    grad(U);
+}
+
+// ************************************************************************* //
