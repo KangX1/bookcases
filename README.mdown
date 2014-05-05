@@ -1,0 +1,9 @@
+### About ###
+
+This is the repository for the tutorial cases of the "The OpenFOAM Technology Primer" book.
+
+Authors: Tomislav Maric, Jens Hoepken, Kyle Mooney
+
+### Disclaimer ###
+
+#### This offering is not approved or endorsed by OpenCFD Limited, the producer of the OpenFOAM  software and owner of the OPENFOAM  and OpenCFD  trade marks. ####
