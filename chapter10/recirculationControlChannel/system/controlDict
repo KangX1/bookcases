@@ -51,7 +51,7 @@ maxCo          0.5;
 
 libs
 (
-    "libofBookBoundaryConditions.so"
+    "libprimerBoundaryConditions.so"
 );
 
 // ************************************************************************* //

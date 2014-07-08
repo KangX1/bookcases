@@ -55,7 +55,7 @@ maxDeltaT       0.003;
 libs (
     "libsimpleSwakFunctionObjects.so" 
     "libutilityFunctionObjects.so"
-    "libofBookFunctionObjects.so"
+    "libprimerFunctionObjects.so"
 );
 
 functions

@@ -55,7 +55,7 @@ maxDeltaT       0.005;
 
 // Uncomment to enable the library provided together with the book.
 /*libs (*/
-    /*"libofBookDynamicFvMesh.so"*/
+    /*"libprimerDynamicFvMesh.so"*/
     /*"libutilityFunctionObjects.so"*/
 /*);*/
 
