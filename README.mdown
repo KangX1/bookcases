@@ -8,6 +8,8 @@ Authors:
 * Jens Hoepken jens@sourceflux.de 
 * Kyle Mooney kyle.g.mooney@gmail.com
 
+In case you noticed that not all chapters are listed in the repository directory, don't worry. No tutorial cases are missing - we have simply re-used some tutorial cases for multiple chapters, where it made sense.
+
 ### Disclaimer ###
 
 This offering is not approved or endorsed by OpenCFD Ltd. (ESI Group), the producer of the OpenFOAM software and owner of the OPENFOAM and OpenCFD trade marks. 
