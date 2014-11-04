@@ -10,6 +10,12 @@ Authors:
 
 In case you noticed that not all chapters are listed in the repository directory, don't worry. No tutorial cases are missing - we have simply re-used some tutorial cases for multiple chapters, where it made sense.
 
+The example code has been tested with the following OpenFOAM versions:
+
+    OpenFOAM-2.2.x
+
+**The port to 2.3.x is currently underway - all libraries except primerDynamicFvMesh should run on both versions.**
+
 ### Disclaimer ###
 
 This offering is not approved or endorsed by OpenCFD Ltd. (ESI Group), the producer of the OpenFOAM software and owner of the OPENFOAM and OpenCFD trade marks. 
